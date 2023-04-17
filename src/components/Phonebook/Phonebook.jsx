@@ -6,6 +6,7 @@ export class Phonebook extends Component {
   state = {
     contacts: [],
     name: '',
+    number: '',
   };
 
   // deleteContact = contactId => {
@@ -35,6 +36,16 @@ export class Phonebook extends Component {
             required
             value={this.state.name}
             onChange={e => this.setState({ name: e.target.value })}
+          />
+          <p>Number</p>
+          <input
+            type="tel"
+            name="number"
+            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+            required
+            value={this.state.number}
+            onChange={e => this.setState({ number: e.target.value })}
           />
           <button type="button" onClick={this.handleAddContact}>
             Add contact
