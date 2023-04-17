@@ -16,9 +16,13 @@ export class Phonebook extends Component {
   // };
 
   handleAddContact = () => {
-    const { contacts, name } = this.state;
-    const newContact = { id: nanoid(), name };
-    this.setState({ contacts: [...contacts, newContact], name: '' });
+    const { contacts, name, number } = this.state;
+    const newContact = { id: nanoid(), name, number };
+    this.setState({
+      contacts: [...contacts, newContact],
+      name: '',
+      number: '',
+    });
   };
 
   render() {
@@ -47,6 +51,7 @@ export class Phonebook extends Component {
             value={this.state.number}
             onChange={e => this.setState({ number: e.target.value })}
           />
+
           <button type="button" onClick={this.handleAddContact}>
             Add contact
           </button>

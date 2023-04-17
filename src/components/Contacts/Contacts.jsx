@@ -6,7 +6,9 @@ export const Contacts = ({ contacts }) => {
       <ul>
         {contacts.map(contact => (
           <li key={nanoid()}>
-            <p>{contact.name}</p>
+            <p>
+              {contact.name}: {contact.number}
+            </p>
             <button>delete</button>
           </li>
         ))}
