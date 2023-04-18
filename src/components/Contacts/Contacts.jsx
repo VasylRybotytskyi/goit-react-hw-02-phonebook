@@ -1,4 +1,5 @@
 import { nanoid } from 'nanoid';
+import { ContactItem } from './Contacts.styled';
 
 export const Contacts = ({ contacts, onDeleteContact }) => {
   return (
@@ -10,12 +11,10 @@ export const Contacts = ({ contacts, onDeleteContact }) => {
       </>
       <ul>
         {contacts.map(contact => (
-          <li key={nanoid()}>
-            <p>
-              {contact.name}: {contact.number}
-            </p>
+          <ContactItem key={nanoid()}>
+            <p>{contact.name}</p>
             <button onClick={() => onDeleteContact(contact.id)}>delete</button>
-          </li>
+          </ContactItem>
         ))}
       </ul>
     </>

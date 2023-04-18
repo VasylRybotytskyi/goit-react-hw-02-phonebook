@@ -14,11 +14,6 @@ export class App extends Component {
     number: '',
   };
 
-  // handleAddContact = newContact => {
-  //   this.setState(prevState => ({
-  //     contacts: [...prevState.contacts, newContact],
-  //   }));
-  // };
   // Функція видалення контактів
   deleteContact = contactId => {
     this.setState(prevState => ({
@@ -31,7 +26,6 @@ export class App extends Component {
       <div>
         <Phonebook
           contacts={this.state.contacts}
-          onAddContact={this.handleAddContact}
           onDeleteContact={this.deleteContact}
         />
       </div>
