@@ -1,14 +1,9 @@
 import { nanoid } from 'nanoid';
-import { ContactItem } from './Contacts.styled';
+import { ContactItem } from './ContactList.styled';
 
-export const Contacts = ({ contacts, onDeleteContact }) => {
+export const ContactList = ({ contacts, onDeleteContact }) => {
   return (
     <>
-      <h2>Contacts</h2>
-      <>
-        <p>Find contacts by name</p>
-        {/* <input type="text" value={filter} onChange={handleFilterChange} /> */}
-      </>
       <ul>
         {contacts.map(contact => (
           <ContactItem key={nanoid()}>

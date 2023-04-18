@@ -1,5 +1,7 @@
 import { Component } from 'react';
-import { Phonebook } from './Phonebook/Phonebook';
+import { ContactForm } from './ContactForm/ContactForm';
+import { ContactList } from './ContactList/ContactList';
+import { Filter } from './Filter/Filter';
 
 export class App extends Component {
   state = {
@@ -11,7 +13,10 @@ export class App extends Component {
     ],
     filter: '',
   };
-
+  //Функція фільтрації контактів
+  filterContacts = e => {
+    this.setState({ filter: e.target.value });
+  };
   // Функція видалення контактів
   deleteContact = contactId => {
     this.setState(prevState => ({
@@ -22,7 +27,11 @@ export class App extends Component {
   render() {
     return (
       <div>
-        <Phonebook
+        <h1>Phonebook</h1>
+        <ContactForm />
+        <h1>Contacts</h1>
+        <Filter onChange={this.filterContacts} value={this.state.filter} />
+        <ContactList
           contacts={this.state.contacts}
           onDeleteContact={this.deleteContact}
         />

@@ -1,5 +1,5 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { Contacts } from '../Contacts/Contacts';
+
 import * as yup from 'yup';
 
 const schema = yup.object().shape({
@@ -11,7 +11,7 @@ const initialValues = {
   name: '',
   number: '',
 };
-export const Phonebook = ({ contacts, onDeleteContact, state }) => {
+export const ContactForm = () => {
   const handleSubmit = (values, { resetForm }) => {
     console.log(values);
     resetForm();
@@ -19,7 +19,6 @@ export const Phonebook = ({ contacts, onDeleteContact, state }) => {
 
   return (
     <>
-      <h2>Phonebook</h2>
       <Formik
         initialValues={initialValues}
         validationSchema={schema}
@@ -35,8 +34,6 @@ export const Phonebook = ({ contacts, onDeleteContact, state }) => {
           <button type="submit">Add contact</button>
         </Form>
       </Formik>
-
-      <Contacts contacts={contacts} onDeleteContact={onDeleteContact} />
     </>
   );
 };
