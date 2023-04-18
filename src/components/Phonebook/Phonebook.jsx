@@ -7,11 +7,11 @@ const schema = yup.object().shape({
   number: yup.number().required(),
 });
 
-// const initialValues = {
-//   name: '',
-//   number: '',
-// };
-export const Phonebook = ({ contacts, onDeleteContact }) => {
+const initialValues = {
+  name: '',
+  number: '',
+};
+export const Phonebook = ({ contacts, onDeleteContact, state }) => {
   const handleSubmit = (values, { resetForm }) => {
     console.log(values);
     resetForm();
@@ -21,7 +21,7 @@ export const Phonebook = ({ contacts, onDeleteContact }) => {
     <>
       <h2>Phonebook</h2>
       <Formik
-        initialValues={{ name: '', number: '' }}
+        initialValues={initialValues}
         validationSchema={schema}
         onSubmit={handleSubmit}
       >
