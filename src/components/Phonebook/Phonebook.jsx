@@ -1,63 +1,39 @@
-import { Contacts } from 'components/Contacts/Contacts';
-import React, { Component } from 'react';
+import { Contacts } from '../Contacts/Contacts';
 import { nanoid } from 'nanoid';
 
-export class Phonebook extends Component {
-  state = {
-    contacts: [],
-    name: '',
-    number: '',
-  };
-
-  // deleteContact = contactId => {
-  //   this.setState(prevState => ({
-  //     contacts: prevState.contacts.filter(contact => contact.id !== contactId),
-  //   }));
-  // };
-
-  handleAddContact = () => {
-    const { contacts, name, number } = this.state;
+export const Phonebook = ({ contacts, onAddContact, onDeleteContact }) => {
+  const handleAddContact = () => {
+    const { name, number } = contacts;
     const newContact = { id: nanoid(), name, number };
-    this.setState({
-      contacts: [...contacts, newContact],
-      name: '',
-      number: '',
-    });
+    onAddContact(newContact);
   };
 
-  render() {
-    const { contacts } = this.state;
-    return (
+  return (
+    <>
+      <h2>Phonebook</h2>
       <>
-        <h2>Phonebook</h2>
-        <>
-          <p>Name</p>
-          <input
-            type="text"
-            name="name"
-            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-            required
-            value={this.state.name}
-            onChange={e => this.setState({ name: e.target.value })}
-          />
-          <p>Number</p>
-          <input
-            type="tel"
-            name="number"
-            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-            required
-            value={this.state.number}
-            onChange={e => this.setState({ number: e.target.value })}
-          />
+        <p>Name</p>
+        <input
+          type="text"
+          name="name"
+          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+          required
+        />
+        <p>Number</p>
+        <input
+          type="tel"
+          name="number"
+          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+          required
+        />
 
-          <button type="button" onClick={this.handleAddContact}>
-            Add contact
-          </button>
-        </>
-        <Contacts contacts={contacts} onDeleteContact={this.deleteContact} />
+        <button type="button" onClick={handleAddContact}>
+          Add contact
+        </button>
       </>
-    );
-  }
-}
+      <Contacts contacts={contacts} onDeleteContact={onDeleteContact} />
+    </>
+  );
+};
