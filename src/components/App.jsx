@@ -26,6 +26,15 @@ export class App extends Component {
   };
   //Функція яка приймає data із ContactForm і записує в state.contacts.
   formSubmitHandler = data => {
+    const { name } = data;
+    const { contacts } = this.state;
+    const existingContact = contacts.find(contact => contact.name === name);
+
+    if (existingContact) {
+      alert(`${name} is already in contacts.`);
+      return;
+    }
+
     const newContact = { id: nanoid(), ...data };
     this.setState(({ contacts }) => ({
       contacts: [newContact, ...contacts],
