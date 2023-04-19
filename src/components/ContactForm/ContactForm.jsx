@@ -36,10 +36,10 @@ export class ContactForm extends Component {
           <FormContainer>
             <label htmlFor="name">Name</label>
             <FormInput type="text" name="name" id="name" />
-            <FormErrorMessage name="name" />
+            <FormErrorMessage name="name" component="span" />
             <label htmlFor="number">Number</label>
             <FormInput type="tel" name="number" id="number" />
-            <FormErrorMessage name="number" />
+            <FormErrorMessage name="number" component="span" />
             <SubmitButton type="submit">Add contact</SubmitButton>
           </FormContainer>
         </Formik>
