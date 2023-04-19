@@ -23,12 +23,16 @@ export class App extends Component {
       contacts: prevState.contacts.filter(contact => contact.id !== contactId),
     }));
   };
+  //Функція яка піднімає state із ContactForm
+  formSubmitHandler = data => {
+    console.log(data);
+  };
 
   render() {
     return (
       <div>
         <h1>Phonebook</h1>
-        <ContactForm />
+        <ContactForm onSubmit={this.formSubmitHandler} />
         <h1>Contacts</h1>
         <Filter onChange={this.filterContacts} value={this.state.filter} />
         <ContactList

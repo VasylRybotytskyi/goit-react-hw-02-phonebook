@@ -1,5 +1,5 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-
+import React, { Component } from 'react';
 import * as yup from 'yup';
 
 const schema = yup.object().shape({
@@ -7,33 +7,36 @@ const schema = yup.object().shape({
   number: yup.number().required(),
 });
 
-const initialValues = {
-  name: '',
-  number: '',
-};
-export const ContactForm = () => {
-  const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
+export class ContactForm extends Component {
+  state = {
+    name: '',
+    number: '',
+  };
+  //Функція яка передає дані App
+  handleSubmit = (values, { resetForm }) => {
+    this.props.onSubmit(values);
     resetForm();
   };
 
-  return (
-    <>
-      <Formik
-        initialValues={initialValues}
-        validationSchema={schema}
-        onSubmit={handleSubmit}
-      >
-        <Form>
-          <label htmlFor="name">Name</label>
-          <ErrorMessage name="name" />
-          <Field type="text" name="name" />
-          <label htmlFor="number">Number</label>
-          <ErrorMessage name="number" />
-          <Field type="tel" name="number" />
-          <button type="submit">Add contact</button>
-        </Form>
-      </Formik>
-    </>
-  );
-};
+  render() {
+    return (
+      <>
+        <Formik
+          initialValues={this.state}
+          validationSchema={schema}
+          onSubmit={this.handleSubmit}
+        >
+          <Form>
+            <label htmlFor="name">Name</label>
+            <ErrorMessage name="name" />
+            <Field type="text" name="name" />
+            <label htmlFor="number">Number</label>
+            <ErrorMessage name="number" />
+            <Field type="tel" name="number" />
+            <button type="submit">Add contact</button>
+          </Form>
+        </Formik>
+      </>
+    );
+  }
+}
