@@ -34,13 +34,21 @@ export class App extends Component {
 
   render() {
     const { filter, contacts } = this.state;
+    const normalizedContact = filter.toLocaleLowerCase();
+    const visibleContacts = contacts.filter(contact =>
+      contact.name.toLocaleLowerCase().includes(normalizedContact)
+    );
+
     return (
       <div>
         <h1>Phonebook</h1>
         <ContactForm onSubmit={this.formSubmitHandler} />
         <h1>Contacts</h1>
         <Filter onChange={this.filterContacts} value={filter} />
-        <ContactList contacts={contacts} onDeleteContact={this.deleteContact} />
+        <ContactList
+          contacts={visibleContacts}
+          onDeleteContact={this.deleteContact}
+        />
       </div>
     );
   }
