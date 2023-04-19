@@ -1,6 +1,7 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import React, { Component } from 'react';
 import * as yup from 'yup';
+import { StyledForm } from './ContactForm.styled';
 
 const schema = yup.object().shape({
   name: yup.string().required(),
@@ -27,15 +28,15 @@ export class ContactForm extends Component {
           validationSchema={schema}
           onSubmit={this.handleSubmit}
         >
-          <Form>
+          <StyledForm>
             <label htmlFor="name">Name</label>
+            <Field type="text" name="name" id="name" />
             <ErrorMessage name="name" />
-            <Field type="text" name="name" />
             <label htmlFor="number">Number</label>
+            <Field type="tel" name="number" id="number" />
             <ErrorMessage name="number" />
-            <Field type="tel" name="number" />
             <button type="submit">Add contact</button>
-          </Form>
+          </StyledForm>
         </Formik>
       </>
     );
