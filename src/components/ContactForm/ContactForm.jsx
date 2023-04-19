@@ -1,5 +1,6 @@
-import { Formik } from 'formik';
 import React, { Component } from 'react';
+import { Formik } from 'formik';
+import PropTypes from 'prop-types';
 import * as yup from 'yup';
 import {
   FormContainer,
@@ -14,11 +15,15 @@ const schema = yup.object().shape({
 });
 
 export class ContactForm extends Component {
+  static propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+  };
+
   state = {
     name: '',
     number: '',
   };
-  //Функція яка передає дані в App
+
   handleSubmit = (values, { resetForm }) => {
     this.props.onSubmit(values);
     this.setState({ name: '', number: '' });
