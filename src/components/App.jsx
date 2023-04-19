@@ -33,16 +33,14 @@ export class App extends Component {
   };
 
   render() {
+    const { filter, contacts } = this.state;
     return (
       <div>
         <h1>Phonebook</h1>
         <ContactForm onSubmit={this.formSubmitHandler} />
         <h1>Contacts</h1>
-        <Filter onChange={this.filterContacts} value={this.state.filter} />
-        <ContactList
-          contacts={this.state.contacts}
-          onDeleteContact={this.deleteContact}
-        />
+        <Filter onChange={this.filterContacts} value={filter} />
+        <ContactList contacts={contacts} onDeleteContact={this.deleteContact} />
       </div>
     );
   }
