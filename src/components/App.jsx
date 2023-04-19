@@ -2,6 +2,7 @@ import { Component } from 'react';
 import { ContactForm } from './ContactForm/ContactForm';
 import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
+import { nanoid } from 'nanoid';
 
 export class App extends Component {
   state = {
@@ -23,9 +24,12 @@ export class App extends Component {
       contacts: prevState.contacts.filter(contact => contact.id !== contactId),
     }));
   };
-  //Функція яка піднімає state із ContactForm
+  //Функція яка приймає data із ContactForm і записує в state.contacts.
   formSubmitHandler = data => {
-    console.log(data);
+    const newContact = { id: nanoid(), ...data };
+    this.setState(prevState => ({
+      contacts: [...prevState.contacts, newContact],
+    }));
   };
 
   render() {
