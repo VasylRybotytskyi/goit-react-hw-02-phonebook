@@ -1,14 +1,15 @@
+import { FilterWrapper, FilterLabel, FilterInput } from './Filter.styled';
 export const Filter = ({ onChange, value }) => {
   return (
-    <>
-      <label htmlFor="find">Find contacts by name</label>
-      <input
+    <FilterWrapper>
+      <FilterLabel htmlFor="find">Find contacts by name</FilterLabel>
+      <FilterInput
         type="text"
         onChange={onChange}
         value={value}
         id="find"
         name="find"
       />
-    </>
+    </FilterWrapper>
   );
 };

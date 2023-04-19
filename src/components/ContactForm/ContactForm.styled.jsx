@@ -1,42 +1,40 @@
 import styled from 'styled-components';
-import { Form } from 'formik';
+import { Field, ErrorMessage, Form } from 'formik';
 
-export const StyledForm = styled(Form)`
+export const FormContainer = styled(Form)`
   display: flex;
   flex-direction: column;
-  gap: 10px;
+
   max-width: 30%;
   padding: 20px;
   border: 1px solid #333;
   border-radius: 5px;
   box-sizing: border-box;
+`;
 
-  label {
-    font-size: 18px;
-    color: #333;
-  }
+export const FormInput = styled(Field)`
+  padding: 5px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+`;
 
-  input {
-    padding: 10px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-    font-size: 16px;
-  }
+export const FormErrorMessage = styled(ErrorMessage)`
+  color: red;
+  margin-bottom: 5px;
+`;
 
-  button {
-    padding: 10px;
-    border-radius: 4px;
-    border: none;
-    background-color: #333;
-    color: #fff;
-    font-size: 18px;
-    cursor: pointer;
-    transition: background-color 0.2s, color 0.2s;
-  }
-
-  button:hover,
-  button:active {
+export const SubmitButton = styled.button`
+  padding: 10px;
+  border-radius: 4px;
+  border: none;
+  background-color: #333;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+  &:hover,
+  &:active {
     background-color: #fff;
     color: #333;
   }
