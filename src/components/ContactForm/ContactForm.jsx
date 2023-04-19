@@ -12,9 +12,10 @@ export class ContactForm extends Component {
     name: '',
     number: '',
   };
-  //Функція яка передає дані App
+  //Функція яка передає дані в App
   handleSubmit = (values, { resetForm }) => {
     this.props.onSubmit(values);
+    this.setState({ name: '', number: '' });
     resetForm();
   };
 

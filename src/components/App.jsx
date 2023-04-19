@@ -27,8 +27,8 @@ export class App extends Component {
   //Функція яка приймає data із ContactForm і записує в state.contacts.
   formSubmitHandler = data => {
     const newContact = { id: nanoid(), ...data };
-    this.setState(prevState => ({
-      contacts: [...prevState.contacts, newContact],
+    this.setState(({ contacts }) => ({
+      contacts: [newContact, ...contacts],
     }));
   };
 
